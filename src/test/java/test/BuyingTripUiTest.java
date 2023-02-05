@@ -58,7 +58,7 @@ public class BuyingTripUiTest {
     @Test
     @DisplayName("Должен показывать сообщение об ошибке, если срок карты истек, страница оплаты")
     void shouldShowWarningIfCardIsExpiredForPayment() {
-        Card expiredCard = DataGenerator.getInvalidExpDateCard(1);
+        Card expiredCard = DataGenerator.getInvalidExpDateCard(1, 1);
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
         paymentPage.fillData(expiredCard);
@@ -68,7 +68,7 @@ public class BuyingTripUiTest {
     @Test
     @DisplayName("Должен показывать сообщение об ошибке, если срок карты истек, страница кредита")
     void shouldShowWarningIfCardIsExpiredForCredit() {
-        Card expiredCard = DataGenerator.getInvalidExpDateCard(2);
+        Card expiredCard = DataGenerator.getInvalidExpDateCard(1, 1);
         StartPage startPage = new StartPage();
         CreditPage creditPage = startPage.goToCreditPage();
         creditPage.fillData(expiredCard);
@@ -78,7 +78,7 @@ public class BuyingTripUiTest {
     @Test
     @DisplayName("Должен показывать сообщение об ошибке, если срок действия карты более 5 лет, страница оплаты")
     void shouldShowWarningIfExpirationDateMoreThan5YearsForPayment() {
-        Card invalidExpDateCard = DataGenerator.getInvalidExpDateCard(61);
+        Card invalidExpDateCard = DataGenerator.getInvalidExpDateCard(0,6);
         StartPage startPage = new StartPage();
         PaymentPage paymentPage = startPage.goToPaymentPage();
         paymentPage.fillData(invalidExpDateCard);
@@ -88,7 +88,7 @@ public class BuyingTripUiTest {
     @Test
     @DisplayName("Должен показывать сообщение об ошибке, если срок действия карты более 5 лет, страница кредита")
     void shouldShowWarningIfExpirationDateMoreThan5YearsForCredit() {
-        Card invalidExpDateCard = DataGenerator.getInvalidExpDateCard(61);
+        Card invalidExpDateCard = DataGenerator.getInvalidExpDateCard(0, 6);
         StartPage startPage = new StartPage();
         CreditPage creditPage = startPage.goToCreditPage();
         creditPage.fillData(invalidExpDateCard);

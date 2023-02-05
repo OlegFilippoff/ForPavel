@@ -33,9 +33,9 @@ public class DataGenerator {
         return new Card("4444 4444 4444 4441", getCurrentMonth(), getCurrentYear(), "123456789Йцукенгшщзхъ!\"№;%:?*()123456789Йцукенгшщзхъ!\"№;%:?*()", "123");
     }
 
-    public static Card getInvalidExpDateCard(int months) {
+    public static Card getInvalidExpDateCard(int months, int years) {
         String month = LocalDate.now().minusMonths(months).format(DateTimeFormatter.ofPattern("MM"));
-        String year = getCurrentYear();
+        String year = LocalDate.now().minusYears(years).format(DateTimeFormatter.ofPattern("yy"));
         return new Card("4444 4444 4444 4441", month, year, "Card Holder", "123");
     }
 
