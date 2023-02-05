@@ -34,7 +34,7 @@ public class DataGenerator {
     }
 
     public static Card getInvalidExpDateCard(int months) {
-        String month = LocalDate.now().minusMonths(months).format(DateTimeFormatter.ofPattern("yy"));
+        String month = LocalDate.now().minusMonths(months).format(DateTimeFormatter.ofPattern("MM"));
         String year = getCurrentYear();
         return new Card("4444 4444 4444 4441", month, year, "Card Holder", "123");
     }

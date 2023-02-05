@@ -20,7 +20,7 @@ services:
       - POSTGRES_DB=postgresApp
 
   mysql:
-    image: mysql:8.0.18
+    image: mysql:latest
     container_name: mysql-container
     ports:
       - '3306:3306'
