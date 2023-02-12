@@ -13,8 +13,7 @@ public class ApiUtils {
     static String url = System.getProperty("sut.url");
 
     static RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri(url.split(":")[0] + ":" + url.split(":")[1])
-            .setPort(Integer.parseInt(url.split(":")[2].split("/")[0]))
+            .setBaseUri(url)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
@@ -27,8 +26,10 @@ public class ApiUtils {
                         .body(card)
                         .when()
                         .post(path)
-                        .getStatusCode();
-        System.out.println(statusCode);
+                        .then()
+                        .log().body()
+                        .extract()
+                        .statusCode();
         return statusCode;
     }
 }
